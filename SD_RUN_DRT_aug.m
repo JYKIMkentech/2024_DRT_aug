@@ -186,15 +186,16 @@ for s = 1:num_scenarios
     plot(theta_true, gamma_discrete_true, 'k-', 'LineWidth', 1.5);
     hold off;
     
-    % --------- R0 값을 그래프 내부에 표시하는 부분 ---------
-    % 데이터 범위에 맞춰 표시 위치(x_pos, y_pos)를 적절히 지정하세요.
-    % 아래는 예시로 전체 구간 중 약 10% 지점, 최대 gamma의 80% 지점에 표시하도록 함.
-    x_pos = min(theta_s) + 0.1*(max(theta_s) - min(theta_s));
-    y_pos = max(gamma_s) * 0.8; 
+    % -----------------------------
+    %  R_0 값을 지수형식(Scientific Notation)으로 표시
+    %  (예: 5e-13 -> 5.00000000e-13)
+    % -----------------------------
+    x_pos = min(theta_s) ;
+    y_pos = max(gamma_s) ; 
     
-    text(x_pos, y_pos, sprintf('R_0 = %.3f \\Omega', R0_est_all(s)), ...
-        'FontSize', 10, 'Color', 'red');
-    % -----------------------------------------------------------
+    text(x_pos, y_pos, ...
+         sprintf('R_0 = %.8e \\Omega', R0_est_all(s)), ...  % <-- 핵심 부분
+         'FontSize', 10, 'Color', 'k');
     
     xlabel('\theta', 'FontSize', labelFontSize);
     ylabel('\gamma', 'FontSize', labelFontSize);
@@ -202,5 +203,4 @@ for s = 1:num_scenarios
     set(gca, 'FontSize', axisFontSize);
     ylim([0 inf]);
 end
-
 

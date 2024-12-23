@@ -7,7 +7,7 @@ titleFontSize = 12;
 legendFontSize = 12;
 labelFontSize = 12;
 
-lambda_grids = logspace(-8, 3, 5);
+lambda_grids = logspace(-8, 3, 30);
 num_lambdas = length(lambda_grids);
 
 OCV = 0; % 합성데이터 생성 시 0으로 고정 (이 스크립트에서는 사용 안 해도 무방)
