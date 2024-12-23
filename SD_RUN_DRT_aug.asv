@@ -12,7 +12,7 @@ legendFontSize = 12;
 labelFontSize  = 12;
 
 %% (3) Load Data
-file_path = 'G:\공유 드라이브\Battery Software Lab\Projects\DRT\SD_lambda_aug\';
+file_path = 'G:\공유 드라이브\Battery Software Lab\Projects\DRT\SD_lambda\';
 mat_files = dir(fullfile(file_path, '*.mat'));
 
 for file = mat_files'
@@ -70,7 +70,7 @@ gamma_lower_all              = cell(num_scenarios, 1);
 gamma_upper_all              = cell(num_scenarios, 1);
 gamma_resample_all_scenarios = cell(num_scenarios, 1);
 
-num_resamples = 500;  % bootstrap 횟수
+num_resamples = 50;  % bootstrap 횟수
 
 for s = 1:num_scenarios
     fprintf('Processing %s Type %s Scenario %d/%d...\n', ...
@@ -97,8 +97,7 @@ for s = 1:num_scenarios
     theta_discrete_all{s} = theta_discrete(:);
 
     % (6.2) Bootstrap (R0 포함)
-    [gamma_lower, gamma_upper, gamma_resample_all] = ...
-        bootstrap_uncertainty_aug(t, ik, V_sd, lambda, n, dt, dur, num_resamples);
+    [gamma_lower, gamma_upper, gamma_resample_all] = bootstrap_uncertainty_aug(t, ik, V_sd, lambda, n, dt, dur, num_resamples);
 
     gamma_lower_all{s}              = gamma_lower(:);
     gamma_upper_all{s}              = gamma_upper(:);
@@ -185,16 +184,6 @@ for s = 1:num_scenarios
     hold on;
     plot(theta_true, gamma_discrete_true, 'k-', 'LineWidth', 1.5);
     hold off;
-    
-    % --------- R0 값을 그래프 내부에 표시하는 부분 ---------
-    % 데이터 범위에 맞춰 표시 위치(x_pos, y_pos)를 적절히 지정하세요.
-    % 아래는 예시로 전체 구간 중 약 10% 지점, 최대 gamma의 80% 지점에 표시하도록 함.
-    x_pos = min(theta_s) + 0.1*(max(theta_s) - min(theta_s));
-    y_pos = max(gamma_s) * 0.8; 
-    
-    text(x_pos, y_pos, sprintf('R_0 = %.3f \\Omega', R0_est_all(s)), ...
-        'FontSize', 10, 'Color', 'red');
-    % -----------------------------------------------------------
     
     xlabel('\theta', 'FontSize', labelFontSize);
     ylabel('\gamma', 'FontSize', labelFontSize);

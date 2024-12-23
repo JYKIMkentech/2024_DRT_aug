@@ -13,7 +13,7 @@ num_lambdas = length(lambda_grids);
 OCV = 0; % 합성데이터 생성 시 0으로 고정 (이 스크립트에서는 사용 안 해도 무방)
 
 %% (2) 데이터 로드
-save_path = 'G:\공유 드라이브\Battery Software Lab\Projects\DRT\SD_lambda\';
+save_path = 'G:\공유 드라이브\Battery Software Lab\Projects\DRT\SD_lambda_aug\';
 file_path = 'G:\공유 드라이브\Battery Software Lab\Projects\DRT\SD_new\';
 mat_files = dir(fullfile(file_path, '*.mat'));
 if isempty(mat_files)
@@ -155,7 +155,6 @@ semilogx(optimal_lambda, CVE_total(optimal_idx), 'ro', 'MarkerSize', 10, 'LineWi
 xlabel('\lambda', 'FontSize', labelFontSize);
 ylabel('CVE', 'FontSize', labelFontSize);
 title('CVE vs \lambda ', 'FontSize', titleFontSize);
-grid on;
 legend({'CVE', ['Optimal \lambda = ', num2str(optimal_lambda, '%.2e')]}, 'Location', 'best');
 hold off;
 

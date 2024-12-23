@@ -17,9 +17,8 @@ function [gamma_lower, gamma_upper, gamma_resample_all] = ...
 %   gamma_upper        - Upper bound (95th percentile) of gamma
 %   gamma_resample_all - All resampled gamma estimates (num_resamples x n)
 
-    % (1) 원본 데이터로부터 한 번 gamma, R0를 추정(중앙값으로 삼아도 됨)
-    [gamma_original, ~, ~, ~, ~, ~, ~] = ...
-        SD_DRT_estimation_aug(t, ik, V_sd, lambda, n, dt, dur);
+    % (1) 원본 데이터로부터 한 번 gamma 를 추정(중앙값으로 삼아도 됨)
+    [gamma_original, ~, ~, ~, ~, ~, ~] = SD_DRT_estimation_aug(t, ik, V_sd, lambda, n, dt, dur);
 
     n_length = length(gamma_original);
     gamma_resample_all = zeros(num_resamples, n_length);

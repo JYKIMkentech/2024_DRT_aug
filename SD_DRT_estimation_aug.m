@@ -55,7 +55,7 @@ function [gamma_est, R0_est, V_est, theta_discrete, tau_discrete, W_aug, y] = SD
     W_aug = [W, ik(:)];  
 
     % 5) y = V_sd (OCV=0 가정)
-    y = V_sd(:);
+    y = V_sd(:); %V_sd - OCV 
 
     % 6) 정규화(regularization) 위한 차분 행렬 (gamma에만 1차 차분, R0에는 없음)
     L = zeros(n-1, n);
@@ -82,5 +82,5 @@ function [gamma_est, R0_est, V_est, theta_discrete, tau_discrete, W_aug, y] = SD
     R0_est    = params(end);
 
     % 11) 추정 전압
-    V_est = W_aug * params;  
+    V_est = W_aug * params;  % ocv + W_aug * params
 end
