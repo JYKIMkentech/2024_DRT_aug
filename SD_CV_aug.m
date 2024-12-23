@@ -14,7 +14,8 @@ OCV = 0; % 합성데이터 생성 시 0으로 고정 (이 스크립트에서는 
 
 %% (2) 데이터 로드
 save_path = 'G:\공유 드라이브\Battery Software Lab\Projects\DRT\SD_lambda_aug\';
-file_path = 'G:\공유 드라이브\Battery Software Lab\Projects\DRT\SD_new\';
+file_path = 'G:\공유 드라이브\Battery Software Lab\Projects\DRT\SD_lambda_aug\';
+%file_path = 'G:\공유 드라이브\Battery Software Lab\Projects\DRT\SD_new\';
 mat_files = dir(fullfile(file_path, '*.mat'));
 if isempty(mat_files)
     error('데이터 파일이 존재하지 않습니다. 경로를 확인해주세요.');
