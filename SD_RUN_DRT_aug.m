@@ -85,7 +85,7 @@ for s = 1:num_scenarios
     n    = scenario_data.n;
     
     % lambda(regularization)는 scenario_data에 저장되어 있다고 가정
-    lambda = 100;%scenario_data.Lambda_hat; 
+    lambda = scenario_data.Lambda_hat; 
     
     % (6.1) DRT 추정 (R0 포함)
     [gamma_est, R0_est, V_est, theta_discrete, tau_discrete, W_aug, y] = ...

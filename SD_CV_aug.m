@@ -157,6 +157,7 @@ xlabel('\lambda', 'FontSize', labelFontSize);
 ylabel('CVE', 'FontSize', labelFontSize);
 title('CVE vs \lambda ', 'FontSize', titleFontSize);
 legend({'CVE', ['Optimal \lambda = ', num2str(optimal_lambda, '%.2e')]}, 'Location', 'best');
+ylim([660.46 660.5])
 hold off;
 
 %% SD_DRT_estimation_with_Wy_aug.m
